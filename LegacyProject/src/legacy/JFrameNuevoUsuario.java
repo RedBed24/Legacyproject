@@ -91,7 +91,7 @@ public class JFrameNuevoUsuario extends JFrame {
 					}
 					
 				} catch (Exception e) {
-					textPane.setText("No se ha podido crear  el usuario.¿Tal vez ya existe?");
+					textPane.setText("No se ha podido crear  el usuario.Â¿Tal vez ya existe?");
 				}
 				
 			}

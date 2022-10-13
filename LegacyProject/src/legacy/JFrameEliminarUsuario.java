@@ -80,7 +80,7 @@ public class JFrameEliminarUsuario extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean eliminado = false;
 				
-				//esto habr· que implementarlo como sea cuando se solicite desde Gerencia
+				//esto habr√° que implementarlo como sea cuando se solicite desde Gerencia
 				
 			}
 		});
