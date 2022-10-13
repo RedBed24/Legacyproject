@@ -10,6 +10,8 @@ import java.util.Vector;
 
 import org.apache.derby.jdbc.EmbeddedDriver;
 
+import persistencia.Agente;
+
 public class Usuario {
 	
 	public String mLogin;
@@ -59,6 +61,20 @@ public class Usuario {
 	
 	//Inserción de un nuevo usuario en la base de datos
 	public int insert() throws Exception{
+		
+		Agente agente= Agente.getAgente();
+		agente.insert("INSERT INTO `iso`.`usuario` (`login`, `pass`) VALUES ('"+mLogin+"', '"+mPassword+"');");
+		
+		// estas líneas es para comprobar que se haya conseguid añadir bien el usuario
+		System.out.println("Usuario a intentar añadir: "+this);
+		Vector<Object> vect= agente.select("SELECT * FROM iso.usuario WHERE login='"+mLogin+"'");
+		Usuario usr= new Usuario(vect.get(0).toString(), vect.get(0).toString());
+		System.out.println("Usuario recogido de la base de datos: " +usr); 
+		// estas líneas es para comprobar que se haya conseguido añadir bien el usuario
+
+		return 0;
+
+		/*
 		Driver derbyEmbeddedDriver = new EmbeddedDriver();
 		DriverManager.registerDriver(derbyEmbeddedDriver);
 		Connection mBD = DriverManager.getConnection(""+BDConstantes.DRIVER+":"+BDConstantes.DBNAME+";create=false", BDConstantes.DBUSER, BDConstantes.DBPASS);
@@ -67,6 +83,7 @@ public class Usuario {
     	stmt.close();
     	mBD.close();
 		return res;
+		*/
 	}
 	
 	public int update () throws Exception{
