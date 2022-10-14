@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.sql.Connection;
+import java.sql.ResultSetMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +17,7 @@ public class Agente {
 	// Identificador ODBC de la base de datos
 	private static String url = "jdbc:mysql://localhost:3307/iso?user=root&password=root";
 	// Driven para conectar con bases de datos MySQL
-	private static String driver = "com.mysql.jdbc.Driver";
+	private static String driver = "com.mysql.cj.jdbc.Driver";
 
 	// Constructor
 	private Agente() throws Exception {
@@ -38,7 +39,7 @@ public class Agente {
 	// Metodo para realizar la conexion a la base de datos
 	private void conectar() throws Exception {
 		Class.forName(driver);
-		mBD = DriverManager.getConnection(url);
+		mBD = DriverManager.getConnection(url, "root", "root");
 	}
 
 	// Metodo para desconectar de la base de datos
@@ -87,10 +88,14 @@ public class Agente {
 		conectar();
 		Statement stmt = mBD.createStatement();
 		ResultSet res = stmt.executeQuery(SQL);
+		ResultSetMetaData rsmd = res.getMetaData();
+		int numCol = rsmd.getColumnCount();
 		while (res.next()) {
 			Vector<Object> v = new Vector<Object>();
-			v.add(res.getObject(1));
-			v.add(res.getObject(2));
+			for (int i = 1; i <= numCol; i++) {
+				v.add(res.getObject(i));
+				System.out.println(res.getObject(i));
+			}
 			vectoradevolver.add(v);
 		}
 		stmt.close();
