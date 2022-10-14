@@ -86,6 +86,11 @@ public class Usuario {
 		*/
 	}
 	
+	public int eliminar() throws Exception {
+		Agente agente= Agente.getAgente();
+		return agente.delete("DELETE FROM `iso`.`usuario` WHERE (`login` = '"+mLogin+"')");
+	}
+
 	public int update () throws Exception{
 		//por ahora no nos ha hecho falta actualizar nada...
 		return 0;
@@ -97,4 +102,5 @@ public class Usuario {
 	
 
 	private String DBPORT="3308";
+
 }
