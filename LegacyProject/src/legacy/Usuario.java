@@ -72,16 +72,7 @@ public class Usuario {
 	public int insert() throws Exception{
 		
 		Agente agente= Agente.getAgente();
-		agente.insert("INSERT INTO `iso`.`usuario` (`login`, `pass`) VALUES ('"+mLogin+"', '"+mPassword+"');");
-		
-		// estas líneas es para comprobar que se haya conseguid añadir bien el usuario
-		System.out.println("Usuario a intentar añadir: "+this);
-		Vector<Object> vect= agente.select("SELECT * FROM iso.usuario WHERE login='"+mLogin+"'");
-		Usuario usr= new Usuario(vect.get(0).toString(), vect.get(0).toString());
-		System.out.println("Usuario recogido de la base de datos: " +usr); 
-		// estas líneas es para comprobar que se haya conseguido añadir bien el usuario
-
-		return 0;
+		return agente.insert("INSERT INTO `iso`.`usuario` (`login`, `pass`) VALUES ('"+mLogin+"', '"+mPassword+"');");
 
 		/*
 		Driver derbyEmbeddedDriver = new EmbeddedDriver();
