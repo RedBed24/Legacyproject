@@ -30,9 +30,17 @@ public class Usuario {
 		this.mPassword = password;
 	}
 	
-	//Selecci�n de un usuario de la base de datos a partir del login y el password
+	//Selección de un usuario de la base de datos a partir del login y el password
 	@SuppressWarnings("unchecked")
 	public static Usuario read(String login, String password) throws Exception{
+		
+		Agente agente= Agente.getAgente();
+		Vector<Object> leido= agente.select("SELECT * FROM iso.usuario WHERE login = '"+login+"' AND pass = '"+password+"'");
+		if (leido.size()==1)
+			return new Usuario((String)((Vector)leido.get(0)).get(0), (String)((Vector)leido.get(0)).get(1));
+		return null;
+		
+		/*
 		String l,g;
 		Usuario u = null;
 		Vector<Object> aux = null;
@@ -57,6 +65,7 @@ public class Usuario {
 			u = new Usuario((String) aux.elementAt(0), (String) aux.elementAt(1));
 		}
 		return u;
+		*/
 	}
 	
 	//Inserción de un nuevo usuario en la base de datos
@@ -89,6 +98,10 @@ public class Usuario {
 	public int update () throws Exception{
 		//por ahora no nos ha hecho falta actualizar nada...
 		return 0;
+	}
+	
+	public String toString() {
+		return mLogin+ mPassword;
 	}
 	
 
