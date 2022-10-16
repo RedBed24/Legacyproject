@@ -121,6 +121,8 @@ public class JFrameLogin extends JFrame {
 		buttonLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				textPaneEstado.setText("");
+				textFieldLog.setText("");
+				textFieldPass.setText("");
 				/*
 				 * Limpiaremos el panel de salida para visualizar nuevas operaciones
 				 */
@@ -128,6 +130,7 @@ public class JFrameLogin extends JFrame {
 		});
 		buttonLimpiar.setBounds(264, 117, 148, 29);
 		contentPane.add(buttonLimpiar);
+		
 
 		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
 		btnNuevoUsuario.addActionListener(new ActionListener() {
