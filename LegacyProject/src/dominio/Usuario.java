@@ -32,7 +32,7 @@ public class Usuario {
 		return null;
 	}
 	
-	//Inserción de un nuevo usuario en la base de datos
+	//Inserta un nuevo usuario en la base de datos
 	public int insert() throws Exception{
 		Agente agente= Agente.getAgente();
 		return agente.insert("INSERT INTO `iso`.`usuario` (`login`, `pass`) VALUES ('"+mLogin+"', '"+mPassword+"');");
