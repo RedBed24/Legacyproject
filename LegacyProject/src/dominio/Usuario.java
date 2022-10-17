@@ -4,10 +4,10 @@ import java.util.Vector;
 
 import persistencia.Agente;
 
-public class Usuario {
+public class Usuario{
 	
-	public String mLogin;
-	public String mPassword;
+	private String mLogin;
+	private String mPassword;
 	
 	//Constructor para la creacion de un objeto Usuario vacio
 	public Usuario(){
@@ -22,13 +22,12 @@ public class Usuario {
 	}
 	
 	//Seleccion de un usuario de la base de datos a partir del login y el password
-	@SuppressWarnings("unchecked")
-	public static Usuario read(String login, String password) throws Exception{
-		
+	//@SuppressWarnings("unchecked")
+	public static Usuario read() throws Exception {
 		Agente agente= Agente.getAgente();
-		Vector<Object> leido= agente.select("SELECT * FROM iso.usuario WHERE login = '"+login+"' AND pass = '"+password+"'");
+		Vector<Object> leido = agente.select("SELECT*FROM iso.usuario WHERE login = "+mLogin+"AND pass = "+mPassword+"");
 		if (leido.size()==1)
-			return new Usuario((String)((Vector)leido.get(0)).get(0), (String)((Vector)leido.get(0)).get(1));
+			return new Usuario((String)((Vector<?>)leido.get(0)).get(0), (String)((Vector<?>)leido.get(0)).get(1));
 		return null;
 	}
 	
