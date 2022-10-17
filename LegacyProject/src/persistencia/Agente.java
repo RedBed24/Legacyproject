@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.Vector;
 
 public class Agente {
-	// instancia del agente
+	// Instancia del agente
 	protected static Agente mInstancia = null;
 	// Conexion con la base de datos
 	protected static Connection mBD;
@@ -26,8 +26,8 @@ public class Agente {
 	}
 
 	// Implementacion del patron singleton
-	// Este patron de diseÃ±o permite implementar clases de las cuales
-	// solo existir una instancia
+	// Este patrón de diseño permite implementar clases de las cuales
+	// solo existe una instancia
 	// http://es.wikipedia.org/wiki/Singleton
 	public static Agente getAgente() throws Exception {
 		if (mInstancia == null) {
