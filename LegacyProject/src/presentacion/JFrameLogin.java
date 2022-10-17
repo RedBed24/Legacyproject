@@ -100,7 +100,7 @@ public class JFrameLogin extends JFrame {
 		contentPane.add(lblEstado);
 
 		textPaneEstado = new JTextPane();
-		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobaciÃ³n de login o las excepciones lanzadas");
+		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
 		textPaneEstado.setEditable(false);
 		textPaneEstado.setBounds(6, 235, 406, 102);
 		contentPane.add(textPaneEstado);
