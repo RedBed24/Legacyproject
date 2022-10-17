@@ -28,7 +28,7 @@ public class JFrameEliminarUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public JFrameEliminarUsuario() {
-		setTitle("Eliminar usuario registrado - ya se implementar\u00E1...");
+		setTitle("Eliminar usuario registrado");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 420, 285);
 		contentPane = new JPanel();
