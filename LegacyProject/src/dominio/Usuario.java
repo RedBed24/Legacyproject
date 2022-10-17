@@ -9,7 +9,7 @@ public class Usuario {
 	public String mLogin;
 	public String mPassword;
 	
-	//Constructor para la creacion de un objeto usuario vacio
+	//Constructor para la creación de un objeto usuario vacio
 	public Usuario(){
 		this.mLogin = null;
 		this.mPassword = null;
@@ -21,7 +21,7 @@ public class Usuario {
 		this.mPassword = password;
 	}
 	
-	//Elección de un usuario de la base de datos mediante el login y el password
+	//Selección de un usuario de la base de datos mediante el login y el password
 	@SuppressWarnings("unchecked")
 	public static Usuario read(String login, String password) throws Exception{
 		
