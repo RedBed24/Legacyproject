@@ -12,7 +12,7 @@ import java.util.Vector;
 public class Agente {
 	// Instancia del agente
 	protected static Agente mInstancia = null;
-	// Conexion con la base de datos
+	// Conexión con la base de datos
 	protected static Connection mBD;
 	// Identificador ODBC de la base de datos
 	private static String url = "jdbc:mysql://localhost:3306/iso?user=root&password=root";
@@ -25,7 +25,7 @@ public class Agente {
 
 	}
 
-	// Implementacion del patron singleton
+	// Implementación del patron singleton
 	// Este patrón de diseño permite implementar clases de las cuales
 	// solo existe una instancia
 	// http://es.wikipedia.org/wiki/Singleton
@@ -47,7 +47,7 @@ public class Agente {
 		mBD.close();
 	}
 
-	// Metodo para realizar una insercion en la base de datos
+	// Metodo para realizar una inserción en la base de datos
 	public int insert(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -57,7 +57,7 @@ public class Agente {
 		return res;
 	}
 
-	// Metodo para realizar una eliminacion en la base de datos
+	// Metodo para realizar una eliminación en la base de datos
 	public int delete(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -67,7 +67,7 @@ public class Agente {
 		return res;
 	}
 
-	// Metodo para realizar una eliminacion en la base de datos
+	// Metodo para realizar una eliminación en la base de datos
 	public int update(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -79,8 +79,8 @@ public class Agente {
 
 	public Vector<Object> select(String SQL) throws SQLException, Exception {
 		/*
-		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
-		 * datos El mÅ½todo select develve un vector de vectores, donde cada uno de los
+		 * Metodo para realizar una busqueda o elección de información en la base de
+		 * datos, podemos observar como el método select devuelve un vector de vectores, donde cada uno de los
 		 * vectores que contiene el vector principal representa los registros que se
 		 * recuperan de la base de datos.
 		 */
