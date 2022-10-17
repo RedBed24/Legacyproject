@@ -84,5 +84,16 @@ public class JFrameEliminarUsuario extends JFrame {
 		textPane.setEditable(false);
 		textPane.setBounds(6, 154, 407, 102);
 		contentPane.add(textPane);
+		
+		JButton buttonLimpiar = new JButton("Limpiar");
+		buttonLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textPane.setText("");
+				textFieldLogin.setText("");
+				textFieldPassword.setText("");
+			}
+		});
+		buttonLimpiar.setBounds(253, 117, 141, 29);
+		contentPane.add(buttonLimpiar);
 	}
 }
