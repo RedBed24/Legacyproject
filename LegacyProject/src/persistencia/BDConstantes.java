@@ -1,4 +1,4 @@
-package legacy;
+package persistencia;
 
 public class BDConstantes {
 	final static String DRIVER ="jdbc:derby";

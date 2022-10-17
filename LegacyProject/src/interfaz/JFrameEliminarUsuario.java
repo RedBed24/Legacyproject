@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import legacy.Usuario;
+import dominio.Usuario;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;

@@ -1,4 +1,4 @@
-package legacy;
+package dominio;
 
 import java.util.Vector;
 
