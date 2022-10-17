@@ -9,15 +9,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-public class Agente {
+public class Agente  implements BDConstantes {
 	// instancia del agente
 	protected static Agente mInstancia = null;
 	// Conexion con la base de datos
-	protected static Connection mBD;
-	// Identificador ODBC de la base de datos
-	private static String url = "jdbc:mysql://localhost:3306/iso?user=root&password=root";
-	// Driven para conectar con bases de datos MySQL
-	private static String driver = "com.mysql.cj.jdbc.Driver";
+    protected static Connection mBD;
+
 
 	// Constructor
 	private Agente() throws Exception {
@@ -38,8 +35,8 @@ public class Agente {
 
 	// Metodo para realizar la conexion a la base de datos
 	private void conectar() throws Exception {
-		Class.forName(driver);
-		mBD = DriverManager.getConnection(url, "root", "root");
+		Class.forName(DRIVER);
+		mBD = DriverManager.getConnection(URL, DBUSER, DBPASS);
 	}
 
 	// Metodo para desconectar de la base de datos
