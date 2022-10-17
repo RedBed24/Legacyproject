@@ -39,7 +39,7 @@ public class JFrameLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					crearBaseDatosSinoExiste();
+					//crearBaseDatosSinoExiste();
 					JFrameLogin frame = new JFrameLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
