@@ -1,4 +1,4 @@
-package interfaz;
+package presentacion;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

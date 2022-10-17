@@ -1,4 +1,4 @@
-package interfaz;
+package presentacion;
 
 import java.awt.EventQueue;
 
@@ -32,7 +32,6 @@ public class JFrameLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//crearBaseDatosSinoExiste();
 					JFrameLogin frame = new JFrameLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -101,8 +100,7 @@ public class JFrameLogin extends JFrame {
 		contentPane.add(lblEstado);
 
 		textPaneEstado = new JTextPane();
-		textPaneEstado.setToolTipText(
-				"Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
+		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
 		textPaneEstado.setEditable(false);
 		textPaneEstado.setBounds(6, 235, 406, 102);
 		contentPane.add(textPaneEstado);
