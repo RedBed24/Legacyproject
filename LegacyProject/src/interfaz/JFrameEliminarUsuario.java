@@ -1,8 +1,10 @@
-package legacy;
+package interfaz;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import legacy.Usuario;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,7 +17,7 @@ import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class JFrameNuevoUsuario extends JFrame {
+public class JFrameEliminarUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldLogin;
@@ -25,8 +27,8 @@ public class JFrameNuevoUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JFrameNuevoUsuario() {
-		setTitle("Dar de alta a un nuevo usuario");
+	public JFrameEliminarUsuario() {
+		setTitle("Eliminar usuario registrado - ya se implementar\u00E1...");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 420, 285);
 		contentPane = new JPanel();
@@ -52,28 +54,28 @@ public class JFrameNuevoUsuario extends JFrame {
 		textFieldPassword.setBounds(87, 75, 134, 28);
 		contentPane.add(textFieldPassword);
 		
-		JButton btnAltaUsuario = new JButton("Alta usuario");
+		JButton btnAltaUsuario = new JButton("Eliminar usuario");
 		btnAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean insertado = false;
+				boolean eliminado = false;
 				try {
 					Usuario u = new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
-					if(u.insert() ==1)
-						insertado = true;
+					if(u.eliminar() ==1)
+						eliminado = true;
 					
-					if(insertado){
-						textPane.setText("Usuario creado correctamente");
+					if(eliminado){
+						textPane.setText("Usuario eliminado correctamente");
 					} else {
-						textPane.setText("No se ha podido insertar el usuario");
+						textPane.setText("No se ha podido eliminar el usuario");
 					}
 					
 				} catch (Exception e) {
-					textPane.setText("No se ha podido crear  el usuario.¿Tal vez ya existe?");
+					textPane.setText("No se ha podido eliminar el usuario.¿Tal vez no existe?");
 				}
 				
 			}
 		});
-		btnAltaUsuario.setBounds(253, 76, 117, 29);
+		btnAltaUsuario.setBounds(253, 76, 141, 29);
 		contentPane.add(btnAltaUsuario);
 		
 		JLabel label_1 = new JLabel("Estado");
