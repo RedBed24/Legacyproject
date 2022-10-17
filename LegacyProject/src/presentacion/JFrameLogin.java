@@ -142,7 +142,7 @@ public class JFrameLogin extends JFrame {
 
 		/*
 		 * JScrollPane scrollPaneSalida = new JScrollPane(); scrollPaneSalida.
-		 * setToolTipText("Este panel mostrar\u00E1 el resultado de la consulta, las excepciones o cualquier otro resultado"
+		 * setToolTipText("Este panel mostrará el resultado de la consulta, las excepciones o cualquier otro resultado"
 		 * ); scrollPaneSalida.setBounds(6, 193, 407, 108); scrollPaneSalida.
 		 * contentPane.add(scrollPaneSalida);
 		 */
