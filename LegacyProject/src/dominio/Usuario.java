@@ -2,6 +2,9 @@ package dominio;
 
 import java.util.Vector;
 
+import excepciones.InvalidLoginException;
+import excepciones.InvalidPasswordException;
+import excepciones.InvalidUserException;
 import persistencia.Agente;
 
 public class Usuario {
@@ -16,9 +19,9 @@ public class Usuario {
 	}
 	
 	//Constructor para la creacion de un Usuario
-	public Usuario(String login, String password){
-		this.mLogin = login;
-		this.mPassword = password;
+	public Usuario(String login, String password) throws InvalidUserException {
+		if ((this.mLogin = login).length() < 4) throw new InvalidLoginException("Usuario demasiado corto, debe tener al menos 4 carácteres.");
+		if ((this.mPassword = password).length() < 4) throw new InvalidPasswordException("Contraseña demasiado corta, debe tener al menos 4 carácteres.");
 	}
 	
 	//Seleccion de un usuario de la base de datos a partir del login y el password
