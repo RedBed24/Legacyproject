@@ -22,25 +22,21 @@ public class Usuario {
 	}
 	
 	//Seleccion de un usuario de la base de datos a partir del login y el password
-	@SuppressWarnings("unchecked")
-	public static Usuario read(String login, String password) throws Exception{
-		
+	public boolean read() throws Exception{
 		Agente agente= Agente.getAgente();
-		Vector<Object> leido= agente.select("SELECT * FROM iso.usuario WHERE login = '"+login+"' AND pass = '"+password+"'");
-		if (leido.size()==1)
-			return new Usuario((String)((Vector)leido.get(0)).get(0), (String)((Vector)leido.get(0)).get(1));
-		return null;
+		Vector<Object> leido= agente.select(mLogin, mPassword);
+		return leido.size() == 1;
 	}
 	
 	//Inserción de un nuevo usuario en la base de datos
-	public int insert() throws Exception{
+	public boolean insert() throws Exception{
 		Agente agente= Agente.getAgente();
-		return agente.insert("INSERT INTO `iso`.`usuario` (`login`, `pass`) VALUES ('"+mLogin+"', '"+mPassword+"');");
+		return agente.insert(mLogin, mPassword) == 1;
 	}
 	
-	public int eliminar() throws Exception {
+	public boolean eliminar() throws Exception {
 		Agente agente= Agente.getAgente();
-		return agente.delete("DELETE FROM `iso`.`usuario` WHERE (`login` = '"+mLogin+"')");
+		return agente.delete(mLogin, mPassword) == 1;
 	}
 
 	public int update () throws Exception{
