@@ -57,13 +57,9 @@ public class JFrameEliminarUsuario extends JFrame {
 		JButton btnAltaUsuario = new JButton("Eliminar usuario");
 		btnAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean eliminado = false;
 				try {
 					Usuario u = new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
-					if(u.eliminar() ==1)
-						eliminado = true;
-					
-					if(eliminado){
+					if(u.eliminar() == 1){
 						textPane.setText("Usuario eliminado correctamente");
 					} else {
 						textPane.setText("No se ha podido eliminar el usuario");

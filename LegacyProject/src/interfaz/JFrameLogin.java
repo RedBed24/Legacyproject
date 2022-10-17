@@ -80,11 +80,8 @@ public class JFrameLogin extends JFrame {
 		buttonAceptar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				boolean existe = false;
 				try {
-					if (Usuario.read(textFieldLog.getText(), textFieldPass.getText()) != null)
-						existe = true;
-					if (existe) {
+					if (Usuario.read(textFieldLog.getText(), textFieldPass.getText()) != null) {
 						textPaneEstado.setText("El login ha sido correcto");
 					} else {
 						textPaneEstado.setText("El login ha sido incorrecto");

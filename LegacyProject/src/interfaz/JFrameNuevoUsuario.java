@@ -57,13 +57,9 @@ public class JFrameNuevoUsuario extends JFrame {
 		JButton btnAltaUsuario = new JButton("Alta usuario");
 		btnAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean insertado = false;
 				try {
 					Usuario u = new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
-					if(u.insert() ==1)
-						insertado = true;
-					
-					if(insertado){
+					if(u.insert() == 1){
 						textPane.setText("Usuario creado correctamente");
 					} else {
 						textPane.setText("No se ha podido insertar el usuario");
