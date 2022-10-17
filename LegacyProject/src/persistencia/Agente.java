@@ -79,7 +79,7 @@ public class Agente {
 
 	public Vector<Object> select(String SQL) throws SQLException, Exception {
 		/*
-		 * Metodo para realizar una busqueda o elección de información en la base de
+		 * Método para realizar una búsqueda o elección de información en la base de
 		 * datos, podemos observar como el método select devuelve un vector de vectores, donde cada uno de los
 		 * vectores que contiene el vector principal representa los registros que se
 		 * recuperan de la base de datos.
