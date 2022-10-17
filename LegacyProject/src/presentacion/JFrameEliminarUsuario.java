@@ -91,9 +91,6 @@ public class JFrameEliminarUsuario extends JFrame {
 				textPane.setText("");
 				textFieldLogin.setText("");
 				textFieldPassword.setText("");
-				/*
-				 * Limpiaremos el panel de salida, login y password para visualizar nuevas operaciones
-				 */
 			}
 		});
 		buttonLimpiar.setBounds(253, 117, 141, 29);
