@@ -46,7 +46,7 @@ public class JFrameLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public JFrameLogin() {
-		setTitle("Pr�ctica 1 - Ingeniería del Software...es útil?");
+		setTitle("Practica 1 - Ingenieria del Software...es util?");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 438, 385);
 		contentPane = new JPanel();
@@ -85,12 +85,12 @@ public class JFrameLogin extends JFrame {
 					if (Usuario.read(textFieldLog.getText(), textFieldPass.getText()) != null)
 						existe = true;
 					if (existe) {
-						textPaneEstado.setText("El login ha  sido correcto");
+						textPaneEstado.setText("El login ha sido correcto");
 					} else {
 						textPaneEstado.setText("El login ha sido incorrecto");
 					}
 				} catch (Exception e) {
-					textPaneEstado.setText("Ha ocurrido un error, vuelva a intentarlo" + e.toString());
+					textPaneEstado.setText("Ha ocurrido un error, vuelva a intentarlo " + e.toString());
 				}
 
 			}

@@ -70,7 +70,7 @@ public class JFrameEliminarUsuario extends JFrame {
 					}
 					
 				} catch (Exception e) {
-					textPane.setText("No se ha podido eliminar el usuario.¿Tal vez no existe?");
+					textPane.setText("No se ha podido eliminar el usuario. ¿Tal vez no existe?");
 				}
 				
 			}
