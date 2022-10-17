@@ -66,7 +66,7 @@ public class JFrameEliminarUsuario extends JFrame {
 					}
 					
 				} catch (Exception e) {
-					textPane.setText("No se ha podido eliminar el usuario. Â¿Tal vez no existe?");
+					textPane.setText("No se ha podido eliminar el usuario porque no existe");
 				}
 				
 			}
@@ -80,7 +80,7 @@ public class JFrameEliminarUsuario extends JFrame {
 		contentPane.add(label_1);
 		
 		textPane = new JTextPane();
-		textPane.setToolTipText("Panel para mostrar el restultado de la comprobaci\u00F3n de login o las excepciones lanzadas");
+		textPane.setToolTipText("Panel para mostrar el resultado de la comprobación de login o las excepciones lanzadas");
 		textPane.setEditable(false);
 		textPane.setBounds(6, 154, 407, 102);
 		contentPane.add(textPane);
