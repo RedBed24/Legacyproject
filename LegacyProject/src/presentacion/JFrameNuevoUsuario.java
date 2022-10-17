@@ -59,7 +59,7 @@ public class JFrameNuevoUsuario extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Usuario u = new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
-					if(u.insert() == 1){
+					if(u.insert()){
 						textPane.setText("Usuario creado correctamente");
 					} else {
 						textPane.setText("No se ha podido insertar el usuario");
