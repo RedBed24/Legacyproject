@@ -45,7 +45,7 @@ public class JFrameLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public JFrameLogin() {
-		setTitle("Practica 1 - Ingenieria del Software...es util?");
+		setTitle("Practica 1 - Identificación para acceder al sistema");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 438, 385);
 		contentPane = new JPanel();
