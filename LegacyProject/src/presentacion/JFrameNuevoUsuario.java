@@ -66,7 +66,7 @@ public class JFrameNuevoUsuario extends JFrame {
 					}
 					
 				} catch (Exception e) {
-					textPane.setText("No se ha podido crear el usuario. Â¿Tal vez ya existe?");
+					textPane.setText("No se ha podido crear el usuario porque ya existe");
 				}
 				
 			}
@@ -80,7 +80,7 @@ public class JFrameNuevoUsuario extends JFrame {
 		contentPane.add(label_1);
 		
 		textPane = new JTextPane();
-		textPane.setToolTipText("Panel para mostrar el restultado de la comprobaci\u00F3n de login o las excepciones lanzadas");
+		textPane.setToolTipText("Panel para mostrar el resultado de la comprobación de login o las excepciones lanzadas");
 		textPane.setEditable(false);
 		textPane.setBounds(6, 154, 407, 102);
 		contentPane.add(textPane);
