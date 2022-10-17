@@ -25,7 +25,7 @@ public class Agente {
 
 	}
 
-	// Implementación del patron singleton
+	// Implementación del patrón singleton
 	// Este patrón de diseño permite implementar clases de las cuales
 	// solo existe una instancia
 	// http://es.wikipedia.org/wiki/Singleton
@@ -36,18 +36,18 @@ public class Agente {
 		return mInstancia;
 	}
 
-	// Metodo para realizar la conexion a la base de datos
+	// Método para realizar la conexion a la base de datos
 	private void conectar() throws Exception {
 		Class.forName(driver);
 		mBD = DriverManager.getConnection(url, "root", "root");
 	}
 
-	// Metodo para desconectar de la base de datos
+	// Método para desconectar de la base de datos
 	public void desconectar() throws Exception {
 		mBD.close();
 	}
 
-	// Metodo para realizar una inserción en la base de datos
+	// Método para realizar una inserción en la base de datos
 	public int insert(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -57,7 +57,7 @@ public class Agente {
 		return res;
 	}
 
-	// Metodo para realizar una eliminación en la base de datos
+	// Método para realizar una eliminación en la base de datos
 	public int delete(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -67,7 +67,7 @@ public class Agente {
 		return res;
 	}
 
-	// Metodo para realizar una eliminación en la base de datos
+	// Método para realizar una eliminación en la base de datos
 	public int update(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
