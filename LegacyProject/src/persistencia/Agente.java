@@ -13,7 +13,7 @@ public class Agente  implements BDConstantes {
 	// instancia del agente
 	protected static Agente mInstancia = null;
 	// Conexion con la base de datos
-    protected static Connection mBD;
+	protected static Connection mBD;
 
 
 	// Constructor
