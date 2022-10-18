@@ -6,8 +6,8 @@ import persistencia.Agente;
 
 public class Usuario {
 	
-	public String mLogin;
-	public String mPassword;
+	private String mLogin;
+	private String mPassword;
 	
 	//Constructor para la creación de un objeto usuario vacio
 	public Usuario(){

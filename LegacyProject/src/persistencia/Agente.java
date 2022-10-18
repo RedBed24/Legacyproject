@@ -9,15 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-public class Agente {
+public class Agente  implements BDConstantes {
 	// Instancia del agente
 	protected static Agente mInstancia = null;
-	// Conexión con la base de datos
+	// Conexiï¿½n con la base de datos
 	protected static Connection mBD;
-	// Identificador ODBC de la base de datos
-	private static String url = "jdbc:mysql://localhost:3306/iso?user=root&password=root";
-	// Driven para conectar con bases de datos MySQL
-	private static String driver = "com.mysql.cj.jdbc.Driver";
 
 	// Constructor
 	private Agente() throws Exception {
@@ -25,8 +21,8 @@ public class Agente {
 
 	}
 
-	// Implementación del patrón singleton
-	// Este patrón de diseño permite implementar clases de las cuales
+	// Implementaciï¿½n del patrï¿½n singleton
+	// Este patrï¿½n de diseï¿½o permite implementar clases de las cuales
 	// solo existe una instancia
 	// http://es.wikipedia.org/wiki/Singleton
 	public static Agente getAgente() throws Exception {
@@ -36,18 +32,18 @@ public class Agente {
 		return mInstancia;
 	}
 
-	// Método para realizar la conexion a la base de datos
+	// Mï¿½todo para realizar la conexion a la base de datos
 	private void conectar() throws Exception {
-		Class.forName(driver);
-		mBD = DriverManager.getConnection(url, "root", "root");
+		Class.forName(DRIVER);
+		mBD = DriverManager.getConnection(URL, DBUSER, DBPASS);
 	}
 
-	// Método para desconectar de la base de datos
+	// Mï¿½todo para desconectar de la base de datos
 	public void desconectar() throws Exception {
 		mBD.close();
 	}
 
-	// Método para realizar una inserción en la base de datos
+	// Mï¿½todo para realizar una inserciï¿½n en la base de datos
 	public int insert(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -57,7 +53,7 @@ public class Agente {
 		return res;
 	}
 
-	// Método para realizar una eliminación en la base de datos
+	// Mï¿½todo para realizar una eliminaciï¿½n en la base de datos
 	public int delete(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -67,7 +63,7 @@ public class Agente {
 		return res;
 	}
 
-	// Método para realizar una eliminación en la base de datos
+	// Mï¿½todo para realizar una eliminaciï¿½n en la base de datos
 	public int update(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -79,8 +75,8 @@ public class Agente {
 
 	public Vector<Object> select(String SQL) throws SQLException, Exception {
 		/*
-		 * Método para realizar una búsqueda o selección de información en la base de
-		 * datos, podemos observar como el método select devuelve un vector de vectores, donde cada uno de los
+		 * Mï¿½todo para realizar una bï¿½squeda o selecciï¿½n de informaciï¿½n en la base de
+		 * datos, podemos observar como el mï¿½todo select devuelve un vector de vectores, donde cada uno de los
 		 * vectores que contiene el vector principal representa los registros que se
 		 * recuperan de la base de datos.
 		 */

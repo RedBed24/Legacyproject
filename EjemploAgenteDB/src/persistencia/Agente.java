@@ -25,7 +25,7 @@ public class Agente {
 	}
 
 	// Implementacion del patron singleton
-	// Este patron de diseño permite implementar clases de las cuales
+	// Este patron de diseï¿½o permite implementar clases de las cuales
 	// solo existir una instancia
 	// http://es.wikipedia.org/wiki/Singleton
 	public static Agente getAgente() throws Exception {
@@ -78,7 +78,7 @@ public class Agente {
 	public Vector<Object> select(String SQL) throws SQLException, Exception {
 		/*
 		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
-		 * datos El mŽtodo select develve un vector de vectores, donde cada uno de los
+		 * datos El mï¿½todo select develve un vector de vectores, donde cada uno de los
 		 * vectores que contiene el vector principal representa los registros que se
 		 * recuperan de la base de datos.
 		 */

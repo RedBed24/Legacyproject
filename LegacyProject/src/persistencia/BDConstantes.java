@@ -1,9 +1,12 @@
 package persistencia;
 
-public class BDConstantes {
-	final static String DRIVER ="jdbc:derby";
-	final static String CONNECTION_STRING ="jdbc:derby:iso1_db;create=true";
-	final static String DBNAME ="iso1_db";
-	final static String DBUSER ="admin";
-	final static String DBPASS ="admin";
+public interface BDConstantes {
+	// Driven para conectar con bases de datos MySQL
+	final static String DRIVER ="com.mysql.cj.jdbc.Driver";
+	final static String DBNAME ="iso";
+	final static String DBUSER ="root";
+	final static String DBPASS ="root";
+	// Identificador ODBC de la base de datos
+	final static String URL = "jdbc:mysql://localhost:3306/iso?user=root&password=root";
+
 }
