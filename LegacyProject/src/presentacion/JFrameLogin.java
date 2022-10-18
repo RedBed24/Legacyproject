@@ -45,7 +45,7 @@ public class JFrameLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public JFrameLogin() {
-		setTitle("Practica 1 - Ingenieria del Software...es util?");
+		setTitle("Practica 1 - Identificación para acceder al sistema");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 438, 385);
 		contentPane = new JPanel();
@@ -101,7 +101,7 @@ public class JFrameLogin extends JFrame {
 		contentPane.add(lblEstado);
 
 		textPaneEstado = new JTextPane();
-		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobaciÃ³n de login o las excepciones lanzadas");
+		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
 		textPaneEstado.setEditable(false);
 		textPaneEstado.setBounds(6, 235, 406, 102);
 		contentPane.add(textPaneEstado);
@@ -140,7 +140,7 @@ public class JFrameLogin extends JFrame {
 
 		/*
 		 * JScrollPane scrollPaneSalida = new JScrollPane(); scrollPaneSalida.
-		 * setToolTipText("Este panel mostrar\u00E1 el resultado de la consulta, las excepciones o cualquier otro resultado"
+		 * setToolTipText("Este panel mostrará el resultado de la consulta, las excepciones o cualquier otro resultado"
 		 * ); scrollPaneSalida.setBounds(6, 193, 407, 108); scrollPaneSalida.
 		 * contentPane.add(scrollPaneSalida);
 		 */
