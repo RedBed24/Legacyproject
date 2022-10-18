@@ -59,7 +59,7 @@ public class JFrameEliminarUsuario extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Usuario u = new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
-					if(u.eliminar() == 1){
+					if(u.eliminar()){
 						textPane.setText("Usuario eliminado correctamente");
 					} else {
 						textPane.setText("No se ha podido eliminar el usuario");

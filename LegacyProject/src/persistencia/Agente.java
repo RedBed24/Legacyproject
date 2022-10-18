@@ -43,20 +43,20 @@ public class Agente  implements BDConstantes {
 		mBD.close();
 	}
 
-	// M�todo para realizar una inserci�n en la base de datos
-	public int insert(String SQL) throws SQLException, Exception {
+	// Metodo para realizar una insercion en la base de datos
+	public int insert(String login, String password) throws SQLException, Exception {
 		conectar();
-		PreparedStatement stmt = mBD.prepareStatement(SQL);
+		PreparedStatement stmt = mBD.prepareStatement("insert into `"+DBNAME+"`.`"+TABLENAME+"` ("+FIRSTCOLUMN+", "+SECONDCOLUMN+") Values ('"+login+"', '"+password+"')");
 		int res = stmt.executeUpdate();
 		stmt.close();
 		desconectar();
 		return res;
 	}
 
-	// M�todo para realizar una eliminaci�n en la base de datos
-	public int delete(String SQL) throws SQLException, Exception {
+	// Metodo para realizar una eliminacion en la base de datos
+	public int delete(String login, String password) throws SQLException, Exception {
 		conectar();
-		PreparedStatement stmt = mBD.prepareStatement(SQL);
+		PreparedStatement stmt = mBD.prepareStatement("delete from `"+DBNAME+"`.`"+TABLENAME+"` where "+FIRSTCOLUMN+" = '"+login+"' AND "+SECONDCOLUMN+" = '"+password+"'");
 		int res = stmt.executeUpdate();
 		stmt.close();
 		desconectar();
@@ -73,7 +73,7 @@ public class Agente  implements BDConstantes {
 		return res;
 	}
 
-	public Vector<Object> select(String SQL) throws SQLException, Exception {
+	public Vector<Object> select(String login, String password) throws SQLException, Exception {
 		/*
 		 * M�todo para realizar una b�squeda o selecci�n de informaci�n en la base de
 		 * datos, podemos observar como el m�todo select devuelve un vector de vectores, donde cada uno de los
@@ -84,7 +84,7 @@ public class Agente  implements BDConstantes {
 		Vector<Object> vectoradevolver = new Vector<Object>();
 		conectar();
 		Statement stmt = mBD.createStatement();
-		ResultSet res = stmt.executeQuery(SQL);
+		ResultSet res = stmt.executeQuery("select * from `"+DBNAME+"`.`"+TABLENAME+"` where "+FIRSTCOLUMN+" = '"+login+"' AND "+SECONDCOLUMN+" = '"+password+"'");
 		ResultSetMetaData rsmd = res.getMetaData();
 		int numCol = rsmd.getColumnCount();
 		while (res.next()) {
