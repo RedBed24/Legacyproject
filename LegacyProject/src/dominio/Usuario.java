@@ -9,19 +9,19 @@ public class Usuario {
 	private String mLogin;
 	private String mPassword;
 	
-	//Constructor para la creacion de un objeto Usuario vacio
+	//Constructor para la creación de un objeto usuario vacio
 	public Usuario(){
 		this.mLogin = null;
 		this.mPassword = null;
 	}
 	
-	//Constructor para la creacion de un Usuario
+	//Constructor para la creación de un usuario
 	public Usuario(String login, String password){
 		this.mLogin = login;
 		this.mPassword = password;
 	}
 	
-	//Seleccion de un usuario de la base de datos a partir del login y el password
+	//Selección de un usuario de la base de datos mediante el login y el password
 	@SuppressWarnings("unchecked")
 	public static Usuario read(String login, String password) throws Exception{
 		
@@ -32,7 +32,7 @@ public class Usuario {
 		return null;
 	}
 	
-	//InserciÃ³n de un nuevo usuario en la base de datos
+	//Inserta un nuevo usuario en la base de datos
 	public int insert() throws Exception{
 		Agente agente= Agente.getAgente();
 		return agente.insert("INSERT INTO `iso`.`usuario` (`login`, `pass`) VALUES ('"+mLogin+"', '"+mPassword+"');");
@@ -44,7 +44,7 @@ public class Usuario {
 	}
 
 	public int update () throws Exception{
-		//por ahora no nos ha hecho falta actualizar nada...
+		//No ha sido necesario actualizar nada
 		return 0;
 	}
 	
