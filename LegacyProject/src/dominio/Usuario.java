@@ -23,7 +23,7 @@ public class Usuario {
 	
 	//Seleccion de un usuario de la base de datos a partir del login y el password
 	@SuppressWarnings("unchecked")
-	public static Usuario read(String login, String password) throws Exception {
+	public static Usuario read(String login, String password) throws Exception{
 		
 		Agente agente= Agente.getAgente();
 		Vector<Object> leido= agente.select("SELECT * FROM iso.usuario WHERE login = '"+login+"' AND pass = '"+password+"'");

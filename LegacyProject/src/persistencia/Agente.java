@@ -15,7 +15,6 @@ public class Agente  implements BDConstantes {
 	// Conexion con la base de datos
 	protected static Connection mBD;
 
-
 	// Constructor
 	private Agente() throws Exception {
 		conectar();
