@@ -112,9 +112,6 @@ public class JFrameLogin extends JFrame {
 				textPaneEstado.setText("");
 				textFieldLog.setText("");
 				textFieldPass.setText("");
-				/*
-				 * Limpiaremos el panel de salida, login y password para visualizar nuevas operaciones
-				 */
 			}
 		});
 		buttonLimpiar.setBounds(264, 117, 148, 29);
