@@ -28,7 +28,7 @@ public class JFrameEliminarUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public JFrameEliminarUsuario() {
-		setTitle("Eliminar usuario registrado");
+		setTitle("Eliminar usuario registrado - ya se implementar\u00E1...");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 420, 285);
 		contentPane = new JPanel();
@@ -66,7 +66,7 @@ public class JFrameEliminarUsuario extends JFrame {
 					}
 					
 				} catch (Exception e) {
-					textPane.setText("No se ha podido eliminar el usuario porque no existe");
+					textPane.setText("No se ha podido eliminar el usuario. Â¿Tal vez no existe?");
 				}
 				
 			}
@@ -80,7 +80,7 @@ public class JFrameEliminarUsuario extends JFrame {
 		contentPane.add(label_1);
 		
 		textPane = new JTextPane();
-		textPane.setToolTipText("Panel para mostrar el resultado de la comprobación de login o las excepciones lanzadas");
+		textPane.setToolTipText("Panel para mostrar el restultado de la comprobaci\u00F3n de login o las excepciones lanzadas");
 		textPane.setEditable(false);
 		textPane.setBounds(6, 154, 407, 102);
 		contentPane.add(textPane);

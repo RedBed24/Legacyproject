@@ -10,9 +10,9 @@ import java.sql.Statement;
 import java.util.Vector;
 
 public class Agente  implements BDConstantes {
-	// Instancia del agente
+	// instancia del agente
 	protected static Agente mInstancia = null;
-	// Conexi�n con la base de datos
+	// Conexion con la base de datos
 	protected static Connection mBD;
 
 	// Constructor
@@ -21,9 +21,9 @@ public class Agente  implements BDConstantes {
 
 	}
 
-	// Implementaci�n del patr�n singleton
-	// Este patr�n de dise�o permite implementar clases de las cuales
-	// solo existe una instancia
+	// Implementacion del patron singleton
+	// Este patron de diseño permite implementar clases de las cuales
+	// solo existir una instancia
 	// http://es.wikipedia.org/wiki/Singleton
 	public static Agente getAgente() throws Exception {
 		if (mInstancia == null) {
@@ -32,18 +32,18 @@ public class Agente  implements BDConstantes {
 		return mInstancia;
 	}
 
-	// M�todo para realizar la conexion a la base de datos
+	// Metodo para realizar la conexion a la base de datos
 	private void conectar() throws Exception {
 		Class.forName(DRIVER);
 		mBD = DriverManager.getConnection(URL, DBUSER, DBPASS);
 	}
 
-	// M�todo para desconectar de la base de datos
+	// Metodo para desconectar de la base de datos
 	public void desconectar() throws Exception {
 		mBD.close();
 	}
 
-	// M�todo para realizar una inserci�n en la base de datos
+	// Metodo para realizar una insercion en la base de datos
 	public int insert(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -53,7 +53,7 @@ public class Agente  implements BDConstantes {
 		return res;
 	}
 
-	// M�todo para realizar una eliminaci�n en la base de datos
+	// Metodo para realizar una eliminacion en la base de datos
 	public int delete(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -63,7 +63,7 @@ public class Agente  implements BDConstantes {
 		return res;
 	}
 
-	// M�todo para realizar una eliminaci�n en la base de datos
+	// Metodo para realizar una eliminacion en la base de datos
 	public int update(String SQL) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
@@ -75,8 +75,8 @@ public class Agente  implements BDConstantes {
 
 	public Vector<Object> select(String SQL) throws SQLException, Exception {
 		/*
-		 * M�todo para realizar una b�squeda o selecci�n de informaci�n en la base de
-		 * datos, podemos observar como el m�todo select devuelve un vector de vectores, donde cada uno de los
+		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
+		 * datos El mŽtodo select develve un vector de vectores, donde cada uno de los
 		 * vectores que contiene el vector principal representa los registros que se
 		 * recuperan de la base de datos.
 		 */
