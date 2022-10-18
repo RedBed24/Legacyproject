@@ -12,7 +12,7 @@ public class Usuario {
 	private String mLogin;
 	private String mPassword;
 	
-	//Constructor para la creación de un objeto usuario vacio
+	//Constructor para la creacion de un objeto usuario vacio
 	public Usuario(){
 		this.mLogin = null;
 		this.mPassword = null;
@@ -24,7 +24,7 @@ public class Usuario {
 		if ((this.mPassword = password).length() < 4) throw new InvalidPasswordException("ContraseÃ±a demasiado corta, debe tener al menos 4 carÃ¡cteres.");
 	}
 
-	//Selección de un usuario de la base de datos mediante el login y el password
+	//Seleccion de un usuario de la base de datos mediante el login y el password
   public boolean read() throws Exception{
 		Agente agente= Agente.getAgente();
 		Vector<Object> leido= agente.select(mLogin, mPassword);

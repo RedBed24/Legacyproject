@@ -64,7 +64,8 @@ public class JFrameNuevoUsuario extends JFrame {
 					} else {
 						textPane.setText("No se ha podido insertar el usuario");
 					}
-					
+				} catch (InvalidPasswordException e) {
+					textPane.setText("No se encuentra un usuario con la contraseña especificada");	
 				} catch (Exception e) {
 					textPane.setText("No se ha podido crear el usuario porque ya existe");
 				}

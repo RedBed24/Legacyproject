@@ -64,9 +64,12 @@ public class JFrameEliminarUsuario extends JFrame {
 					} else {
 						textPane.setText("No se ha podido eliminar el usuario");
 					}
-					
+				
+				} catch (InvalidLoginException e) {
+					textPane.setText("No se cumple el minimo de caracteres");
+				
 				} catch (Exception e) {
-					textPane.setText("No se ha podido eliminar el usuario porque no existe");
+					textPane.setText("No se ha podido eliminar el usuario porque no existe o ya hay un usuario con ese login");
 				}
 				
 			}
