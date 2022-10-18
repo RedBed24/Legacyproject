@@ -1,12 +1,16 @@
 package persistencia;
 
 public interface BDConstantes {
-	// Driven para conectar con bases de datos MySQL
-	final static String DRIVER ="com.mysql.cj.jdbc.Driver";
-	final static String DBNAME ="iso";
-	final static String DBUSER ="root";
-	final static String DBPASS ="root";
+	// Driver para conectar con bases de datos MySQL
+	String DRIVER ="com.mysql.cj.jdbc.Driver";
+	// Información varia sobre la DB y la tabla
+	String DBNAME ="iso";
+	String TABLENAME = "usuario";
+	String FIRSTCOLUMN = "login";
+	String SECONDCOLUMN = "pass";
+	String DBUSER ="root";
+	String DBPASS ="root";
 	// Identificador ODBC de la base de datos
-	final static String URL = "jdbc:mysql://localhost:3306/iso?user=root&password=root";
+	String URL = "jdbc:mysql://localhost:3306/"+DBNAME+"?user="+DBUSER+"&password="+DBPASS;
 
 }
