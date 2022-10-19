@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dominio.Usuario;
+import excepciones.*;
 
 import javax.swing.JLabel;
 
@@ -84,7 +85,7 @@ public class JFrameLogin extends JFrame {
 					if (u.read()) {
 						textPaneEstado.setText("El login ha sido correcto");
 					} else {
-						textPaneEstado.setText("El login ha sido incorrecto , puesto que no se ha encontrado registrado o no tiene esa contraseña");
+						textPaneEstado.setText("El login ha sido incorrecto , puesto que no se ha encontrado registrado o no tiene esa contraseï¿½a");
 					}
 				} catch (InvalidLoginException e) {
 					textPane.setText("No se cumple el minimo de caracteres");

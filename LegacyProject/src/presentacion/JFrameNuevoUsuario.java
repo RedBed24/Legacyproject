@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dominio.Usuario;
+import excepciones.*;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -65,7 +66,7 @@ public class JFrameNuevoUsuario extends JFrame {
 						textPane.setText("No se ha podido insertar el usuario");
 					}
 				} catch (InvalidPasswordException e) {
-					textPane.setText("No se encuentra un usuario con la contraseña especificada");	
+					textPane.setText("No se encuentra un usuario con la contraseï¿½a especificada");	
 				} catch (Exception e) {
 					textPane.setText("No se ha podido crear el usuario. Â¿Tal vez ya existe?");
 				}

@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dominio.Usuario;
+import excepciones.*;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
