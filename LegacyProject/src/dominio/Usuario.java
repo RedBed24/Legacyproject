@@ -32,9 +32,9 @@ public class Usuario {
 	}
 	
 	//Inserta un nuevo usuario en la base de datos
-	public boolean insert() throws Exception{
+	public void insert() throws Exception{
 		Agente agente= Agente.getAgente();
-		return agente.insert(mLogin, mPassword) == 1;
+		agente.insert(mLogin, mPassword);
 	}
 	
 	public boolean eliminar() throws Exception {

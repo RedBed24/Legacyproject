@@ -60,11 +60,10 @@ public class JFrameNuevoUsuario extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Usuario u = new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
-					if(u.insert()){
-						textPane.setText("Usuario creado correctamente");
-					} else {
-						textPane.setText("No se ha podido insertar el usuario");
-					}
+					u.insert();
+					textPane.setText("Usuario creado correctamente.");
+				} catch (InvalidLoginException e) {
+					textPane.setText("No se cumple el minimo de caracteres en el login, debe tener al menos 4 caracteres.");
 				} catch (InvalidPasswordException e) {
 					textPane.setText("No se encuentra un usuario con la contrase�a especificada");	
 				} catch (Exception e) {
