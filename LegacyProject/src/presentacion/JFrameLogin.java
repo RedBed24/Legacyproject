@@ -83,14 +83,16 @@ public class JFrameLogin extends JFrame {
 				try {
 					Usuario u= new Usuario(textFieldLog.getText(), textFieldPass.getText());
 					if (u.read()) {
-						textPaneEstado.setText("El login ha sido correcto");
+						textPaneEstado.setText("El login ha sido correcto.");
 					} else {
-						textPaneEstado.setText("El login ha sido incorrecto , puesto que no se ha encontrado registrado o no tiene esa contrase�a");
+						textPaneEstado.setText("El login ha sido incorrecto, puesto que no se ha encontrado registrado o no tiene esa contraseña.");
 					}
 				} catch (InvalidLoginException e) {
-					textPane.setText("No se cumple el minimo de caracteres");
+					textPaneEstado.setText("No se cumple el minimo de caracteres en el login, debe tener al menos 4 caracteres.");
+				} catch (InvalidPasswordException e) {
+					textPaneEstado.setText("No se cumple el minimo de caracteres en el password, debe tener al menos 4 caracteres.");
 				} catch (Exception e) {
-					textPaneEstado.setText("Ha ocurrido un error, vuelva a intentarlo " + e.toString());
+					textPaneEstado.setText("Ha ocurrido un error inesperado, vuelva a intentarlo.");
 				}
 
 			}

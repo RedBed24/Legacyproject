@@ -65,9 +65,9 @@ public class JFrameNuevoUsuario extends JFrame {
 				} catch (InvalidLoginException e) {
 					textPane.setText("No se cumple el minimo de caracteres en el login, debe tener al menos 4 caracteres.");
 				} catch (InvalidPasswordException e) {
-					textPane.setText("No se encuentra un usuario con la contrase�a especificada");	
+					textPane.setText("No se cumple el minimo de caracteres en el password, debe tener al menos 4 caracteres.");
 				} catch (Exception e) {
-					textPane.setText("No se ha podido crear el usuario. ¿Tal vez ya existe?");
+					textPane.setText("No se ha podido crear el usuario porque ya existe uno con ese login.");
 				}
 				
 			}
