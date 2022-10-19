@@ -80,11 +80,14 @@ public class JFrameLogin extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					if (Usuario.read(textFieldLog.getText(), textFieldPass.getText()) != null) {
+					Usuario u= new Usuario(textFieldLog.getText(), textFieldPass.getText());
+					if (u.read()) {
 						textPaneEstado.setText("El login ha sido correcto");
 					} else {
-						textPaneEstado.setText("El login ha sido incorrecto");
+						textPaneEstado.setText("El login ha sido incorrecto , puesto que no se ha encontrado registrado o no tiene esa contraseña");
 					}
+				} catch (InvalidLoginException e) {
+					textPane.setText("No se cumple el minimo de caracteres");
 				} catch (Exception e) {
 					textPaneEstado.setText("Ha ocurrido un error, vuelva a intentarlo " + e.toString());
 				}

@@ -2,6 +2,9 @@ package dominio;
 
 import java.util.Vector;
 
+import excepciones.InvalidLoginException;
+import excepciones.InvalidPasswordException;
+import excepciones.InvalidUserException;
 import persistencia.Agente;
 
 public class Usuario {
@@ -14,33 +17,29 @@ public class Usuario {
 		this.mLogin = null;
 		this.mPassword = null;
 	}
-	
+
 	//Constructor para la creacion de un Usuario
-	public Usuario(String login, String password){
-		this.mLogin = login;
-		this.mPassword = password;
+	public Usuario(String login, String password) throws InvalidUserException {
+		if ((this.mLogin = login).length() < 4) throw new InvalidLoginException("Usuario demasiado corto, debe tener al menos 4 carÃ¡cteres.");
+		if ((this.mPassword = password).length() < 4) throw new InvalidPasswordException("ContraseÃ±a demasiado corta, debe tener al menos 4 carÃ¡cteres.");
+	}
+
+	//Seleccion de un usuario de la base de datos mediante el login y el password
+  public boolean read() throws Exception{
+		Agente agente= Agente.getAgente();
+		Vector<Object> leido= agente.select(mLogin, mPassword);
+		return leido.size() == 1;
 	}
 	
-	//Seleccion de un usuario de la base de datos a partir del login y el password
-	@SuppressWarnings("unchecked")
-	public static Usuario read(String login, String password) throws Exception{
-		
+	//Inserta un nuevo usuario en la base de datos
+	public boolean insert() throws Exception{
 		Agente agente= Agente.getAgente();
-		Vector<Object> leido= agente.select("SELECT * FROM iso.usuario WHERE login = '"+login+"' AND pass = '"+password+"'");
-		if (leido.size()==1)
-			return new Usuario((String)((Vector)leido.get(0)).get(0), (String)((Vector)leido.get(0)).get(1));
-		return null;
+		return agente.insert(mLogin, mPassword) == 1;
 	}
 	
-	//Inserción de un nuevo usuario en la base de datos
-	public int insert() throws Exception{
+	public boolean eliminar() throws Exception {
 		Agente agente= Agente.getAgente();
-		return agente.insert("INSERT INTO `iso`.`usuario` (`login`, `pass`) VALUES ('"+mLogin+"', '"+mPassword+"');");
-	}
-	
-	public int eliminar() throws Exception {
-		Agente agente= Agente.getAgente();
-		return agente.delete("DELETE FROM `iso`.`usuario` WHERE (`login` = '"+mLogin+"')");
+		return agente.delete(mLogin, mPassword) == 1;
 	}
 
 	public int update () throws Exception{
