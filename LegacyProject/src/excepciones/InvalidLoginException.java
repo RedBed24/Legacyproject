@@ -1,24 +1,27 @@
 package excepciones;
 
+/**
+ * @name InvalidLoginException
+ * 
+ * @description Excepción lanzada cuando se pretende usar un login de una longitud menor a 4 caracteres.
+ * 
+ */
+
 public class InvalidLoginException extends InvalidUserException {
 
 	public InvalidLoginException() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidLoginException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidLoginException(Throwable cause) {
 		super(cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidLoginException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 }

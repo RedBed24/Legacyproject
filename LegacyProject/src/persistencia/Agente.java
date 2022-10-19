@@ -10,9 +10,11 @@ import java.sql.Statement;
 import java.util.Vector;
 
 public class Agente  implements BDConstantes {
-	// instancia del agente
+	
+	// Instancia del agente
 	protected static Agente mInstancia = null;
-	// Conexion con la base de datos
+	
+	// Conexión con la base de datos
 	protected static Connection mBD;
 
 	// Constructor
@@ -21,10 +23,8 @@ public class Agente  implements BDConstantes {
 
 	}
 
-	// Implementacion del patron singleton
-	// Este patron de diseÃ±o permite implementar clases de las cuales
-	// solo existir una instancia
-	// http://es.wikipedia.org/wiki/Singleton
+	// Implementación del patrón Singleton --> http://es.wikipedia.org/wiki/Singleton 
+	
 	public static Agente getAgente() throws Exception {
 		if (mInstancia == null) {
 			mInstancia = new Agente();
@@ -32,18 +32,21 @@ public class Agente  implements BDConstantes {
 		return mInstancia;
 	}
 
-	// Metodo para realizar la conexion a la base de datos
+	// Conexión a la base de datos
+	
 	private void conectar() throws Exception {
 		Class.forName(DRIVER);
 		mBD = DriverManager.getConnection(URL, DBUSER, DBPASS);
 	}
 
-	// Metodo para desconectar de la base de datos
+	// Desconectar de la base de datos
+	
 	public void desconectar() throws Exception {
 		mBD.close();
 	}
 
-	// Metodo para realizar una insercion en la base de datos
+	// Inserción en la base de datos
+	
 	public int insert(String login, String password) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement("insert into `"+DBNAME+"`.`"+TABLENAME+"` ("+FIRSTCOLUMN+", "+SECONDCOLUMN+") Values ('"+login+"', '"+password+"')");
@@ -53,7 +56,8 @@ public class Agente  implements BDConstantes {
 		return res;
 	}
 
-	// Metodo para realizar una eliminacion en la base de datos
+	// Eliminación de la base de datos
+	
 	public int delete(String login, String password) throws SQLException, Exception {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement("delete from `"+DBNAME+"`.`"+TABLENAME+"` where "+FIRSTCOLUMN+" = '"+login+"' AND "+SECONDCOLUMN+" = '"+password+"'");
@@ -63,25 +67,14 @@ public class Agente  implements BDConstantes {
 		return res;
 	}
 
-	// Metodo para realizar una eliminacion en la base de datos
-	public int update(String SQL) throws SQLException, Exception {
-		conectar();
-		PreparedStatement stmt = mBD.prepareStatement(SQL);
-		int res = stmt.executeUpdate();
-		stmt.close();
-		desconectar();
-		return res;
-	}
-
+	/*
+	 * Búsqueda o selección de información en la base de datos.
+	 * El método select devuelve un vector de vectores donde cada uno representa 
+	 * los registros que se recuperan de la base de datos.
+	 */
+	
 	public Vector<Object> select(String login, String password) throws SQLException, Exception {
-		/*
-		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
-		 * datos El mÅ½todo select develve un vector de vectores, donde cada uno de los
-		 * vectores que contiene el vector principal representa los registros que se
-		 * recuperan de la base de datos.
-		 */
-
-		Vector<Object> vectoradevolver = new Vector<Object>();
+		Vector<Object> vectorAdevolver = new Vector<Object>();
 		conectar();
 		Statement stmt = mBD.createStatement();
 		ResultSet res = stmt.executeQuery("select * from `"+DBNAME+"`.`"+TABLENAME+"` where "+FIRSTCOLUMN+" = '"+login+"' AND "+SECONDCOLUMN+" = '"+password+"'");
@@ -92,11 +85,11 @@ public class Agente  implements BDConstantes {
 			for (int i = 1; i <= numCol; i++) {
 				v.add(res.getObject(i));
 			}
-			vectoradevolver.add(v);
+			vectorAdevolver.add(v);
 		}
 		stmt.close();
 		desconectar();
-		return vectoradevolver;
+		return vectorAdevolver;
 
 	}
 }

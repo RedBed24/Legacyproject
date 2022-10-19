@@ -1,24 +1,28 @@
 package excepciones;
 
+/**
+ * @name InvalidUserException
+ * 
+ * @description Excepción que indica que no se ha creado el usuario correctamente. Por ejemplo,
+ * 				cuando se introduce un login o un password de menos de 4 caracteres.
+ * 
+ */
+
 public class InvalidUserException extends Exception {
 
 	public InvalidUserException() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidUserException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidUserException(Throwable cause) {
 		super(cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidUserException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 }

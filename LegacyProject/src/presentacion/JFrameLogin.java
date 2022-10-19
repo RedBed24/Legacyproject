@@ -1,6 +1,7 @@
 package presentacion;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,13 +23,14 @@ import javax.swing.JTextPane;
 public class JFrameLogin extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textFieldLog;
-	private JTextField textFieldPass;
+	private JTextField textFieldLogin;
+	private JTextField textFieldPassword;
 	private JTextPane textPaneEstado;
 
-	/**
-	 * Launch the application.
+	/** 
+	 * Arranca la aplicación
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -43,112 +45,130 @@ public class JFrameLogin extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Creación del formulario
 	 */
+	
 	public JFrameLogin() {
-		setTitle("Practica 1 - Ingenieria del Software...es util?");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 438, 385);
+		
+		// Ventana principal de la aplicación
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(null); /* Nos permite colocar los componentes del formulario exactamente donde queramos
+		   							  * aunque no nos permita redimensionar la ventana. */
+		
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setTitle(" Sistema de autenticación de usuarios ");
+		setResizable(false); // Nuestra ventana no dispone de mecanismo de redimensión por lo que hacemos que no se pueda maximizar.
+		setBounds(200, 200, 435, 385); // Dimensiones fijas del formulario al abrirlo.
+		setLocationRelativeTo(null); // Tras fijar las dimensiones, hacemos que el formulario se abra en el centro de la pantalla.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cierra la aplicación.
+		
+		// Etiquetas
 
 		JLabel lblIntroduzcaElLogin = new JLabel("Introduzca el login y el password para acceder al sistema");
-		lblIntroduzcaElLogin.setBounds(6, 19, 386, 43);
+		lblIntroduzcaElLogin.setBounds(16, 19, 386, 43);
+		lblIntroduzcaElLogin.setFont(new Font("Arial",3, 14));
 		contentPane.add(lblIntroduzcaElLogin);
 
-		textFieldLog = new JTextField();
-		textFieldLog.setBounds(86, 68, 134, 28);
-		contentPane.add(textFieldLog);
-		textFieldLog.setColumns(10);
-
-		JLabel lblLogin = new JLabel("Password:");
-		lblLogin.setBounds(6, 122, 73, 16);
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setBounds(30, 72, 69, 16);
 		contentPane.add(lblLogin);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(15, 120, 69, 16);
+		contentPane.add(lblPassword);
+		
+		JLabel lblEstado = new JLabel("Estado");
+		lblEstado.setForeground(Color.RED);
+		lblEstado.setBounds(90, 160, 69, 16);
+		lblEstado.setFont(new Font("Arial",3, 20));
+		contentPane.add(lblEstado);
+		
+		// // Valores de los atributos correspondientes a los campos de texto y el panel
+		
+		textFieldLogin = new JTextField();
+		textFieldLogin.setBounds(86, 68, 150, 28);
+		textFieldLogin.setColumns(10);
+		contentPane.add(textFieldLogin);
+		
+		textFieldPassword = new JTextField();
+		textFieldPassword.setBounds(86, 116, 150, 28);
+		textFieldPassword.setColumns(10);
+		contentPane.add(textFieldPassword);
+			
+		textPaneEstado = new JTextPane();
+		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
+		textPaneEstado.setEditable(false);
+		textPaneEstado.setBounds(7, 183, 240, 157);
+		contentPane.add(textPaneEstado);
 
-		JLabel label = new JLabel("Login:");
-		label.setBounds(6, 74, 61, 16);
-		contentPane.add(label);
-
-		textFieldPass = new JTextField();
-		textFieldPass.setColumns(10);
-		textFieldPass.setBounds(86, 116, 134, 28);
-		contentPane.add(textFieldPass);
-
+		// Botón Aceptar
+		
 		JButton buttonAceptar = new JButton("Aceptar");
 		buttonAceptar.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) { // Autentica al usuario e informa de la situación dada.
 				try {
-					Usuario u= new Usuario(textFieldLog.getText(), textFieldPass.getText());
+					// Se crea un objeto Usuario con lo escrito en las casillas correspondientes al login y al password.
+					Usuario u= new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
+					
+					// Comprueba si el usuario está en la base de datos e informa de la situación que se dé.
 					if (u.read()) {
 						textPaneEstado.setText("El login ha sido correcto.");
 					} else {
-						textPaneEstado.setText("El login ha sido incorrecto, puesto que no se ha encontrado registrado o no tiene esa contraseÃ±a.");
+						textPaneEstado.setText("El login ha sido incorrecto, puesto que no se ha encontrado registrado o no tiene esa contraseña.");
 					}
+					
 				} catch (InvalidLoginException e) {
-					textPaneEstado.setText("No se cumple el minimo de caracteres en el login, debe tener al menos 4 caracteres.");
+					textPaneEstado.setText("No se cumple el mínimo de caracteres en el login. Debe tener al menos 4 caracteres.");
 				} catch (InvalidPasswordException e) {
-					textPaneEstado.setText("No se cumple el minimo de caracteres en el password, debe tener al menos 4 caracteres.");
+					textPaneEstado.setText("No se cumple el mínimo de caracteres en el password. Debe tener al menos 4 caracteres.");
 				} catch (Exception e) {
-					textPaneEstado.setText("Ha ocurrido un error inesperado, vuelva a intentarlo.");
+					textPaneEstado.setText("Ha ocurrido un error inesperado. Vuelva a intentarlo.");
 				}
 
 			}
 		});
-		buttonAceptar.setBounds(264, 69, 148, 29);
+		buttonAceptar.setBounds(264, 69, 148, 29); // Dimensiones fijas
 		contentPane.add(buttonAceptar);
 
-		JLabel lblEstado = new JLabel("Estado");
-		lblEstado.setForeground(Color.RED);
-		lblEstado.setBounds(6, 208, 61, 16);
-		contentPane.add(lblEstado);
-
-		textPaneEstado = new JTextPane();
-		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobaciÃ³n de login o las excepciones lanzadas");
-		textPaneEstado.setEditable(false);
-		textPaneEstado.setBounds(6, 235, 406, 102);
-		contentPane.add(textPaneEstado);
-
-		JButton buttonLimpiar = new JButton("Limpiar");
-		buttonLimpiar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		// Botón Limpiar
+		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {  // Se limpian los campos de texto y el panel.
 				textPaneEstado.setText("");
-				textFieldLog.setText("");
-				textFieldPass.setText("");
+				textFieldLogin.setText("");
+				textFieldPassword.setText("");
 			}
 		});
-		buttonLimpiar.setBounds(264, 117, 148, 29);
-		contentPane.add(buttonLimpiar);
+		btnLimpiar.setBounds(264, 117, 148, 29); // Dimensiones fijas
+		contentPane.add(btnLimpiar);
 		
-
+		// Botón Nuevo Usuario
+		
 		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
-		btnNuevoUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btnNuevoUsuario.addActionListener(new ActionListener() { 
+			public void actionPerformed(ActionEvent arg0) { // Abre la ventana emergente "Dar de alta a un nuevo usuario"
 				JFrameNuevoUsuario frame = new JFrameNuevoUsuario();
 				frame.setVisible(true);
 			}
 		});
-		btnNuevoUsuario.setBounds(264, 157, 148, 29);
+		btnNuevoUsuario.setBounds(264, 200, 140, 50); // Dimensiones fijas
 		contentPane.add(btnNuevoUsuario);
 
+		// Botón Eliminar Usuario
+		
 		JButton btnEliminarUsuario = new JButton("Eliminar Usuario");
 		btnEliminarUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { // Abre la ventana emergente "Eliminar un usuario registrado"
 				JFrameEliminarUsuario frame = new JFrameEliminarUsuario();
 				frame.setVisible(true);
 			}
 		});
-		btnEliminarUsuario.setBounds(264, 197, 148, 28);
+		btnEliminarUsuario.setBounds(264, 270, 140, 50); // Dimensiones fijas
 		contentPane.add(btnEliminarUsuario);
 
-		/*
-		 * JScrollPane scrollPaneSalida = new JScrollPane(); scrollPaneSalida.
-		 * setToolTipText("Este panel mostrar\u00E1 el resultado de la consulta, las excepciones o cualquier otro resultado"
-		 * ); scrollPaneSalida.setBounds(6, 193, 407, 108); scrollPaneSalida.
-		 * contentPane.add(scrollPaneSalida);
-		 */
 	}
 
 }

@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JTextPane;
 
@@ -20,84 +21,103 @@ import java.awt.event.ActionEvent;
 
 public class JFrameEliminarUsuario extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField textFieldLogin;
-	private JTextField textFieldPassword;
-	private JTextPane textPane;
+	private JPanel contentPane; // Formulario 
+	private JTextField textFieldLogin; // Campo de texto del login
+	private JTextField textFieldPassword; // Campo de texto de la password
+	private JTextPane textPaneEstado; // Panel de texto
 
 	/**
-	 * Create the frame.
+	 * Creación del formulario
 	 */
+
 	public JFrameEliminarUsuario() {
-		setTitle("Eliminar usuario registrado - ya se implementar\u00E1...");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 420, 285);
+		
+		// Ventana emergente "Eliminar un usuario registrado"
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(null);  /* Nos permite colocar los componentes del formulario exactamente donde queramos
+									   * aunque no nos permita redimensionar la ventana. */
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setTitle("Eliminar un usuario registrado");
+		setResizable(false); // Nuestra ventana no dispone de mecanismo de redimensión por lo que hacemos que no se pueda maximizar.
+		setBounds(200, 200, 437, 300); // Dimensiones fijas del formulario al abrirlo.
+		setLocationRelativeTo(null); // Tras fijar las dimensiones, hacemos que el formulario se abra en el centro de la pantalla.
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra solamente la ventana emergente
 		
-		JLabel lblLogin = new JLabel("Password:");
-		lblLogin.setBounds(6, 81, 69, 16);
+		// Etiquetas
+		
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setBounds(30, 37, 69, 16);
 		contentPane.add(lblLogin);
 		
-		JLabel label = new JLabel("Login:");
-		label.setBounds(6, 37, 69, 16);
-		contentPane.add(label);
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(15, 81, 69, 16);
+		contentPane.add(lblPassword);
+		
+		JLabel lblEstado = new JLabel("Estado");
+		lblEstado.setForeground(Color.RED);
+		lblEstado.setBounds(170, 130, 69, 16);
+		lblEstado.setFont(new Font("Arial",3, 20));
+		contentPane.add(lblEstado);
+		
+		// Valores de los atributos correspondientes a los campos de texto y el panel
 		
 		textFieldLogin = new JTextField();
-		textFieldLogin.setBounds(87, 31, 134, 28);
-		contentPane.add(textFieldLogin);
+		textFieldLogin.setBounds(87, 31, 150, 28);
 		textFieldLogin.setColumns(10);
+		contentPane.add(textFieldLogin);
 		
 		textFieldPassword = new JTextField();
+		textFieldPassword.setBounds(87, 75, 150, 28);
 		textFieldPassword.setColumns(10);
-		textFieldPassword.setBounds(87, 75, 134, 28);
 		contentPane.add(textFieldPassword);
+			
+		textPaneEstado = new JTextPane();
+		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
+		textPaneEstado.setEditable(false);
+		textPaneEstado.setBounds(6, 154, 407, 102);
+		contentPane.add(textPaneEstado);
 		
-		JButton btnAltaUsuario = new JButton("Eliminar usuario");
-		btnAltaUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		// Botón Eliminar usuario
+		
+		JButton btnEliminarUsuario = new JButton("Eliminar usuario");
+		btnEliminarUsuario.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) { // Elimina al usuario (o no) e informa de la situación.
 				try {
+					// Se crea un objeto Usuario con lo escrito en las casillas correspondientes al login y al password.
 					Usuario u = new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
-					if(u.eliminar()){
-						textPane.setText("Usuario eliminado correctamente");
-					} else {
-						textPane.setText("No se ha podido eliminar el usuario ya que no se encuentra registrado o no tiene esa contraseÃ±a.");
-					}
+					
+					// Elimina al usuario (o no) de la base de datos e informa en el panel de texto la situación que se dé.
+					if(u.eliminar())
+						textPaneEstado.setText("Usuario eliminado correctamente");
+					else
+						textPaneEstado.setText("No se ha podido eliminar el usuario ya que no se encuentra registrado o no tiene esa contraseña.");
+							
 				} catch (InvalidLoginException e) {
-					textPane.setText("No se cumple el minimo de caracteres en el login, debe tener al menos 4 caracteres.");
+					textPaneEstado.setText("No se cumple el mínimo de caracteres en el login, debe tener al menos 4 caracteres.");
 				} catch (InvalidPasswordException e) {
-					textPane.setText("No se cumple el minimo de caracteres en el password, debe tener al menos 4 caracteres.");
+					textPaneEstado.setText("No se cumple el mínimo de caracteres en el password, debe tener al menos 4 caracteres.");
 				} catch (Exception e) {
-					textPane.setText("No se ha podido eliminar el usuario por una razÃ³n inesperada.");
+					textPaneEstado.setText("No se ha podido eliminar el usuario por una razón inesperada.");
 				}
 				
 			}
 		});
-		btnAltaUsuario.setBounds(253, 76, 141, 29);
-		contentPane.add(btnAltaUsuario);
+		btnEliminarUsuario.setBounds(260, 31, 141, 29); // Dimensiones fijas
+		contentPane.add(btnEliminarUsuario);
 		
-		JLabel label_1 = new JLabel("Estado");
-		label_1.setForeground(Color.RED);
-		label_1.setBounds(6, 126, 61, 16);
-		contentPane.add(label_1);
+		// Botón Limpiar
 		
-		textPane = new JTextPane();
-		textPane.setToolTipText("Panel para mostrar el restultado de la comprobaci\u00F3n de login o las excepciones lanzadas");
-		textPane.setEditable(false);
-		textPane.setBounds(6, 154, 407, 102);
-		contentPane.add(textPane);
-		
-		JButton buttonLimpiar = new JButton("Limpiar");
-		buttonLimpiar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				textPane.setText("");
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) { // Se limpian los campos de texto y el panel.
+				textPaneEstado.setText("");
 				textFieldLogin.setText("");
 				textFieldPassword.setText("");
 			}
 		});
-		buttonLimpiar.setBounds(253, 117, 141, 29);
-		contentPane.add(buttonLimpiar);
+		btnLimpiar.setBounds(260, 75, 141, 29); // Dimensiones fijas
+		contentPane.add(btnLimpiar);
 	}
 }
