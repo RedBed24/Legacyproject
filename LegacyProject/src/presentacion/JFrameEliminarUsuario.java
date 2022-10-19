@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dominio.Usuario;
+import excepciones.*;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -62,14 +63,14 @@ public class JFrameEliminarUsuario extends JFrame {
 					if(u.eliminar()){
 						textPane.setText("Usuario eliminado correctamente");
 					} else {
-						textPane.setText("No se ha podido eliminar el usuario");
+						textPane.setText("No se ha podido eliminar el usuario ya que no se encuentra registrado o no tiene esa contraseña.");
 					}
-				
 				} catch (InvalidLoginException e) {
-					textPane.setText("No se cumple el minimo de caracteres");
-				
+					textPane.setText("No se cumple el minimo de caracteres en el login, debe tener al menos 4 caracteres.");
+				} catch (InvalidPasswordException e) {
+					textPane.setText("No se cumple el minimo de caracteres en el password, debe tener al menos 4 caracteres.");
 				} catch (Exception e) {
-					textPane.setText("No se ha podido eliminar el usuario porque no existe o ya hay un usuario con ese login");
+					textPane.setText("No se ha podido eliminar el usuario por una razón inesperada.");
 				}
 				
 			}

@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dominio.Usuario;
+import excepciones.*;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -59,15 +60,14 @@ public class JFrameNuevoUsuario extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Usuario u = new Usuario(textFieldLogin.getText(), textFieldPassword.getText());
-					if(u.insert()){
-						textPane.setText("Usuario creado correctamente");
-					} else {
-						textPane.setText("No se ha podido insertar el usuario");
-					}
+					u.insert();
+					textPane.setText("Usuario creado correctamente.");
+				} catch (InvalidLoginException e) {
+					textPane.setText("No se cumple el minimo de caracteres en el login, debe tener al menos 4 caracteres.");
 				} catch (InvalidPasswordException e) {
-					textPane.setText("No se encuentra un usuario con la contraseña especificada");	
+					textPane.setText("No se cumple el minimo de caracteres en el password, debe tener al menos 4 caracteres.");
 				} catch (Exception e) {
-					textPane.setText("No se ha podido crear el usuario. Â¿Tal vez ya existe?");
+					textPane.setText("No se ha podido crear el usuario porque ya existe uno con ese login.");
 				}
 				
 			}
