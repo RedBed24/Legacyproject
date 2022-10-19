@@ -67,8 +67,8 @@ public class JFrameLogin extends JFrame {
 		// Etiquetas
 
 		JLabel lblIntroduzcaElLogin = new JLabel("Introduzca el login y el password para acceder al sistema");
-		lblIntroduzcaElLogin.setBounds(16, 19, 386, 43);
-		lblIntroduzcaElLogin.setFont(new Font("Arial",3, 14));
+		lblIntroduzcaElLogin.setBounds(35, 19, 386, 43);
+		lblIntroduzcaElLogin.setFont(new Font("Arial",3, 13));
 		contentPane.add(lblIntroduzcaElLogin);
 
 		JLabel lblLogin = new JLabel("Login");
@@ -100,7 +100,7 @@ public class JFrameLogin extends JFrame {
 		textPaneEstado = new JTextPane();
 		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
 		textPaneEstado.setEditable(false);
-		textPaneEstado.setBounds(7, 183, 240, 157);
+		textPaneEstado.setBounds(7, 180, 240, 157);
 		contentPane.add(textPaneEstado);
 
 		// Botón Aceptar
@@ -129,7 +129,7 @@ public class JFrameLogin extends JFrame {
 
 			}
 		});
-		buttonAceptar.setBounds(264, 69, 148, 29); // Dimensiones fijas
+		buttonAceptar.setBounds(264, 69, 140, 29); // Dimensiones fijas
 		contentPane.add(buttonAceptar);
 
 		// Botón Limpiar
@@ -142,7 +142,7 @@ public class JFrameLogin extends JFrame {
 				textFieldPassword.setText("");
 			}
 		});
-		btnLimpiar.setBounds(264, 117, 148, 29); // Dimensiones fijas
+		btnLimpiar.setBounds(264, 117, 140, 29); // Dimensiones fijas
 		contentPane.add(btnLimpiar);
 		
 		// Botón Nuevo Usuario

@@ -76,7 +76,7 @@ public class JFrameEliminarUsuario extends JFrame {
 		textPaneEstado = new JTextPane();
 		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
 		textPaneEstado.setEditable(false);
-		textPaneEstado.setBounds(6, 154, 407, 102);
+		textPaneEstado.setBounds(6, 150, 407, 102);
 		contentPane.add(textPaneEstado);
 		
 		// Botón Eliminar usuario
