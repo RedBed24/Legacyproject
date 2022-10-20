@@ -50,7 +50,7 @@ public class Usuario {
 	// Método toString
 	
 	public String toString() {
-		return mLogin+ mPassword;
+		return mLogin + mPassword;
 	}
 	
 }

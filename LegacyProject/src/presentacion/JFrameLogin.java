@@ -98,7 +98,7 @@ public class JFrameLogin extends JFrame {
 		contentPane.add(textFieldPassword);
 			
 		textPaneEstado = new JTextPane();
-		textPaneEstado.setToolTipText("Panel para mostrar el restultado de la comprobación de login o las excepciones lanzadas");
+		textPaneEstado.setToolTipText("Panel para mostrar el resultado de la comprobación de login o las excepciones lanzadas");
 		textPaneEstado.setEditable(false);
 		textPaneEstado.setBounds(7, 180, 240, 157);
 		contentPane.add(textPaneEstado);
